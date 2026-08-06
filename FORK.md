@@ -38,7 +38,8 @@ iputils ping clamps it to zero and warns. It also depends on the build — with
 `HAVE_SO_TIMESTAMPNS` defined, which is the default on Linux, fping takes its
 timestamps from `CLOCK_REALTIME` rather than `CLOCK_MONOTONIC`.
 
-Proposed upstream as #392. The guard covers the fping parser arm only: iputils
+Merged upstream (#392); the local copy drops out of `homelab` at the next sync
+rebase. The guard covers the fping parser arm only: iputils
 clamps a backward step to zero rather than reporting it, so the ping arm cannot
 receive a value that breaks the arithmetic. It uses a glob class check rather
 than a regex — `[[ =~ ]]` recompiles the ERE on every sample, which is ~65x the
@@ -53,6 +54,4 @@ exits without explaining why.
 ## Contributing back
 
 Anything meant for upstream is branched from `master`, never from `homelab`, so
-it carries no local divergence. I am no longer developing against upstream's
-main line; if something here is useful to anyone, ping me and I will prepare it
-as a clean patch.
+it carries no local divergence.
